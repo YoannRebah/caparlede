@@ -1,0 +1,41 @@
+<div #searchBarTrigger (click)="openFullScreenSearch()" class="flex flex-col gap-1 w-full">
+    <div class="container-input relative border border-gray-400 rounded-3xl flex items-center bg-white px-3 focus-within:border-black">
+        <button><i class="fa-solid fa-magnifying-glass text-gray-400"></i></button>
+        <input #triggerInput type="text" class="rounded-3xl py-2 px-3 w-full text-base" placeholder="Rechercher..." readonly>
+    </div>
+</div>
+
+@if(showFullScreen) {
+    <div #searchBarFullScreen class="crt-container fixed top-0 left-0 w-full h-full bg-gray-300/50 backdrop-blur-sm flex items-start sm:items-center pt-5 sm:pt-0 justify-center animate-scale-in">
+    
+        <div #searchBarContent class="crt-content flex flex-col gap-1 w-[90%] max-w-[520px]">
+    
+            <div class="container-input relative bg-white border-2 border-gray-200 rounded-3xl flex items-center py-1 px-3 focus-within:border-gray-300">
+                <button><i class="fa-solid fa-magnifying-glass text-gray-500"></i></button>
+                <input #fullscreenInput [(ngModel)]="inputValue" (input)="onSearchInput(inputValue)" type="search" class="rounded-3xl py-2 px-3 w-full text-black text-base" placeholder="Rechercher...">
+            </div>
+    
+            <nav class="bg-white border-2 border-gray-100 rounded-3xl p-1 ">
+                <ul>
+                    @for (route of allRoutesDataFiltered; track $index) {
+                        <li>
+                            <a [routerLink]="[`/${route.path}`]" class="flex items-center gap-3 p-1 pl-4 my-1 rounded-3xl text-sm hover:bg-gray-100">
+                                <i class="{{route.data.icon}} text-gray-500"></i>
+                                <div class="flex flex-col">
+                                    <span class="font-semibold">{{route.data.label}}</span>
+                                    <span class="text-xs text-gray-500">{{route.path}}</span>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <hr>
+                        <app-toggle-dark-mode />
+                    </li>
+                </ul>
+            </nav>
+    
+        </div>
+    
+    </div>
+}
