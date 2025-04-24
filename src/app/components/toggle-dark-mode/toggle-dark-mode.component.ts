@@ -8,7 +8,7 @@ import { DarkModeService } from './dark-mode.service';
   styleUrl: './toggle-dark-mode.component.scss'
 })
 export class ToggleDarkModeComponent {
-  isDarkMode = false;
+  isDarkMode!:boolean;
 
   constructor(private darkModeService: DarkModeService) {
     this.darkModeService.isDarkMode$.subscribe(val => this.isDarkMode = val);

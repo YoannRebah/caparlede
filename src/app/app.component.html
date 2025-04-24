@@ -1,3 +1,4 @@
 <div class="app-container h-screen overflow-y-auto bg-white dark:bg-gray-900">
+    <app-loader [isLoading]="(isLoading$ | async) ?? false" [isFullScreen]="true"/>
     <router-outlet></router-outlet>
 </div>

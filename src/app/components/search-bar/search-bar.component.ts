@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, HostListener, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener, OnInit, AfterViewInit, Input, ViewChildren, QueryList } from '@angular/core';
 import { RoutesService } from '../../routes/routes.service';
 import { RouterLink } from '@angular/router';
 import { ToggleDarkModeComponent } from '../toggle-dark-mode/toggle-dark-mode.component';
@@ -18,6 +18,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   resultFiltered!: any;
   inputValue: string = '';
   isShortcutTriggered = false;
+  activeIndex = -1;
 
   @Input() defaultData?: any = this.allRoutesDataFiltered;
 
@@ -26,6 +27,8 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   @ViewChild('searchBarContent', { static: false }) searchBarContent!: ElementRef;
   @ViewChild('triggerInput', { static: true }) triggerInput!: ElementRef<HTMLInputElement>;
   @ViewChild('fullscreenInput', { static: false }) fullscreenInput!: ElementRef<HTMLInputElement>;
+
+  @ViewChildren('link') links!: QueryList<ElementRef>;
 
   constructor(
     private routesService: RoutesService,
@@ -103,6 +106,39 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
       this.closeFullScreenSearch();
     } else {
       this.openFullScreenSearch();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if(this.showFullScreen) {
+      if (event.key === 'ArrowDown') {
+        this.activeIndex = (this.activeIndex + 1) % this.allRoutesDataFiltered.length;
+        this.focusActiveLink();
+        event.preventDefault();
+      } else if (event.key === 'ArrowUp') {
+        this.activeIndex = (this.activeIndex - 1 + this.allRoutesDataFiltered.length) % this.allRoutesDataFiltered.length;
+        this.focusActiveLink();
+        event.preventDefault();
+      }
+    }
+  }
+
+  focusActiveLink() {
+    const linkArray = this.links.toArray();
+    const activeLink = linkArray[this.activeIndex];
+    activeLink?.nativeElement?.focus();
+  }
+
+  onItemClick(index: number) {
+    this.activeIndex = index;
+  }
+
+  onEnterKey() {
+    const linkArray = this.links.toArray();
+    const firstLink = linkArray[0];
+    if (firstLink) {
+      firstLink.nativeElement.click();
     }
   }
   

@@ -10,9 +10,15 @@ export default {
           '50%': { opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
+        crtAnim: {
+          '0%': { transform: 'perspective(1000px) rotateX(6deg) rotateY(-6deg)', opacity: '0' },
+          '50%': { opacity: '0' },
+          '100%': { transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)', opacity: '1' },
+        },
       },
       animation: {
         'scale-in': 'scaleIn 0.5s ease-out forwards',
+        'crt-anim': 'crtAnim 0.5s ease-out forwards',
       },
     }
   },
