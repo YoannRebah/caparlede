@@ -1,17 +1,7 @@
-<header class="header sticky top-0 w-full px-4 lg:px-10 h-[60px]">
-    <nav class="flex items-center justify-between w-full h-full">
-        <ul>
-            <li>
-                <a href="">
-                    [IMAGE]
-                </a>
-            </li>
-        </ul>
-        <ng-content></ng-content>
-        <ul>
-            <li>
-                <button>M</button>
-            </li>
-        </ul>
+<header class="header sticky top-0 w-full h-[60px] bg-primary">
+    <nav class="flex items-center justify-between w-full h-full px-4 lg:px-10">
+        <ng-content select="#left"></ng-content>
+        <ng-content select="#center"></ng-content>
+        <ng-content select="#right"></ng-content>
     </nav>
 </header>

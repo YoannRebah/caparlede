@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CommonModule } from '@angular/common';
 import { DarkModeService } from './components/toggle-dark-mode/dark-mode.service';
+import { ThemeService } from './themes/themes.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, LoaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,9 +21,15 @@ export class AppComponent {
 
   constructor(
     private loadingService: LoadingService,
-    private darkModeService: DarkModeService
+    private darkModeService: DarkModeService,
+    private themeService: ThemeService
   ) {
     this.isLoading$ = this.loadingService.loading$;
     this.darkModeService.isDarkMode$.subscribe(val => this.isDarkMode = val);
+  }
+
+  ngOnInit() {
+    const theme = this.themeService.theme || '1';
+    this.themeService.setTheme(theme);  
   }
 }

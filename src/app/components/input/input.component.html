@@ -1,0 +1,68 @@
+<div class="container-input relative p-1 rounded-xl">
+
+    @if (type !== 'radio' && type !== 'checkbox') {
+      <label [for]="id" class="flex flex-col gap-1">
+        <span class="text-sm font-semibold" [innerHTML]="label"></span>
+        <input
+          [id]="id"
+          [name]="name ?? id"
+          [type]="type"
+          [formControl]="control"
+          [placeholder]="placeholder"
+          [required]="required"
+          class="p-2 text-base rounded-xl border shadow-sm hover:shadow-primary focus-within:shadow-primary"
+          [class.shadow-error]="control.invalid && (control.touched || control.dirty)"
+        />
+      </label>
+    }
+  
+    @if (type === 'radio') {
+      <label [for]="id" class="flex items-center gap-2">
+        <input
+          [id]="id"
+          [name]="name ?? id"
+          type="radio"
+          [formControl]="control"
+          [value]="value"
+          class="py-2 px-1 text-base"
+        />
+        <span class="text-sm font-semibold" [innerHTML]="label"></span>
+      </label>
+    }
+  
+    @if (type === 'checkbox') {
+      <label [for]="id" class="flex items-center gap-2">
+        <input
+          [id]="id"
+          [name]="name ?? id"
+          type="checkbox"
+          [formControl]="control"
+          class="py-2 px-1 text-base"
+        />
+        <span class="text-sm font-semibold" [innerHTML]="label"></span>
+      </label>
+    }
+  
+    <!-- Messages d'erreur -->
+    @if (control.invalid && (control.touched || control.dirty)) {
+      <p class="mt-1 text-xs text-error">
+          @if (hasError('required')) {
+            Ce champ est requis.
+          }
+          @if (hasError('email')) {
+            Format d'email invalide.
+          }
+          @if (hasError('minlength')) {
+            Minimum {{ control.errors?.['minlength'].requiredLength }} caractères.
+          }
+          @if (hasError('maxlength')) {
+            Maximum {{ control.errors?.['maxlength'].requiredLength }} caractères.
+          }
+          @if (hasError('pattern')) {
+            Format invalide.
+          }
+        </p>
+    }
+    
+</div>
+  

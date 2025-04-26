@@ -8,14 +8,15 @@ import { inject } from '@angular/core';
   providedIn: 'root',
 })
 export class LoadingInterceptor implements HttpInterceptor {
-  constructor(private loadingService: LoadingService) {}
+
+  constructor(
+    private loadingService: LoadingService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('Interceptor: Requête démarrée', req.url);
     this.loadingService.setLoading(true);
     return next.handle(req).pipe(
       finalize(() => {
-        console.log('Interceptor: Requête terminée', req.url);
         this.loadingService.setLoading(false);
       })
     );

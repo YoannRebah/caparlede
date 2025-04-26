@@ -1,47 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { RoutesService } from '../routes.service';
-import { HeaderComponent } from '../../components/header/header.component';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { LoadingService } from '../../components/loader/loading.service';
 import { Observable } from 'rxjs';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HeaderConnectedComponent } from '../../components/header/header-connected/header-connected.component';
+import { InputComponent } from '../../components/input/input.component';
+import { FormGroup } from '@angular/forms';
+import { FormService } from '../../components/input/form.service';
 
 @Component({
   selector: 'app-demo',
-  imports: [SearchBarComponent, HeaderComponent],
+  imports: [HeaderConnectedComponent, ReactiveFormsModule, InputComponent],
   templateUrl: './demo.component.html',
   styleUrl: './demo.component.scss'
 })
-export class DemoComponent implements OnInit {
+export class DemoComponent {
 
   loading$: Observable<boolean>;
-  data: any;
+  form!: FormGroup;
 
   constructor(
-    private routesService: RoutesService,
-    private http: HttpClient, 
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private formService: FormService
   ) {
     this.loading$ = this.loadingService.loading$;
   }
 
-  ngOnInit():void {
-    const allRoutes = this.routesService.getAllRoutesWithStandardExclusions();
-    console.log('Toutes les routes Angular :', allRoutes);
-    this.fetchData();
+  ngOnInit(): void {
+    this.form = this.formService.createForm(['email', 'username', 'password', 'checked']);
   }
 
-  fetchData(): void {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/posts/1')
-      .subscribe({
-        next: (response) => {
-          this.data = response;
-          console.log('Données reçues:', response);
-        },
-        error: (err) => {
-          console.error('Erreur:', err);
-        },
-      });
+  getControl(controlName: string) {
+    return this.formService.getFormControl(this.form, controlName);
   }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    } else {
+      console.log('formulaire invalide');
+    }
+  }
+
 }

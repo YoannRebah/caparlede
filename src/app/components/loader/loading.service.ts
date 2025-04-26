@@ -1,4 +1,3 @@
-// components/loader/loading.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -6,8 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoadingService {
+
   private loadingSubject = new BehaviorSubject<boolean>(false);
   loading$: Observable<boolean> = this.loadingSubject.asObservable();
+
   private requestCount = 0;
 
   setLoading(isLoading: boolean) {
@@ -16,7 +17,7 @@ export class LoadingService {
       setTimeout(() => this.loadingSubject.next(true), 0);
     } else if (--this.requestCount <= 0) {
       this.requestCount = 0;
-      setTimeout(() => this.loadingSubject.next(false), 3000);
+      setTimeout(() => this.loadingSubject.next(false), 1500);
     }
   }
 }

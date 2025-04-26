@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+p, span, a, button, input, select, textarea, label, label span {
+  font-family: 'Inter';
+  font-size: 15px;
+}
+
+input,
+select,
+textarea,
+button,
+a {
+  outline: none;
+}
+
+.btn, a, button {
+  cursor: pointer;
+}
+
+a>*, button>*, .btn>* {
+  pointer-events: none;
+}
+
+@layer base {}
+
+@layer components {}
+
+@layer utilities {
+  .anim-fade-scale {
+    animation: anim-fade-scale .5s forwards;
+
+    @keyframes anim-fade-scale {
+      from {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+// ===========
+
+.theme-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-white, #fff);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+
+.theme-close-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-primary, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.theme-close-button:hover {
+  background-color: var(--color-primary-dark, #1d4ed8);
+}
