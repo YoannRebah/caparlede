@@ -3,25 +3,25 @@ export const DEV_DATA_NAV = [
         id: 'dashboard',
         route: 'dashboard',
         icon: '',
-        label: 'Accueil',
+        text: 'Accueil',
     },
     {
         id: 'operations',
         route: 'dashboard',
         icon: '',
-        label: 'Opérations',
+        text: 'Opérations',
         sublinks: [
             {
                 id: 'acheter',
                 route: 'acheter',
                 icon: '',
-                label: 'Acheter',
+                text: 'Acheter',
             },
             {
                 id: 'vendre',
                 route: 'vendre',
                 icon: '',
-                label: 'Vendre',
+                text: 'Vendre',
             }
         ]
     },
@@ -29,19 +29,19 @@ export const DEV_DATA_NAV = [
         id: 'operations-titres',
         route: 'operations-titres',
         icon: '',
-        label: 'Opérations sur titres',
+        text: 'Opérations sur titres',
         sublinks: [
             {
                 id: 'opa',
                 route: 'opa',
                 icon: '',
-                label: 'Opération sur titres',
+                text: 'Opération sur titres',
             },
             {
                 id: 'ak',
                 route: 'ak',
                 icon: '',
-                label: 'Augmentation de capital',
+                text: 'Augmentation de capital',
             }
         ]
     },
@@ -49,25 +49,25 @@ export const DEV_DATA_NAV = [
         id: 'documentation',
         route: 'documentation',
         icon: '',
-        label: 'Documentation',
+        text: 'Documentation',
     },
     {
         id: 'historique',
         route: 'historique',
         icon: '',
-        label: 'Historique des opérations',
+        text: 'Historique des opérations',
         sublinks: [
             {
                 id: 'historique-operations',
                 route: 'historique-operations',
                 icon: '',
-                label: 'Historique des opérations',
+                text: 'Historique des opérations',
             },
             {
                 id: 'historique-autres',
                 route: 'historique-autres',
                 icon: '',
-                label: 'Autres historiques',
+                text: 'Autres historiques',
             },
         ]
     },
@@ -75,6 +75,6 @@ export const DEV_DATA_NAV = [
         id: 'ag',
         route: 'ag',
         icon: '',
-        label: 'Assemblée générale',
+        text: 'Assemblée générale',
     },
 ]

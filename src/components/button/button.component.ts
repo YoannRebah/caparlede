@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { TooltipService } from '../tooltip/tooltip.service';
 
 @Component({
   selector: 'app-button',
@@ -20,9 +21,14 @@ export class ButtonComponent {
   @Input() text?: string;
   @Input() routerLink?: string;
 
+  // TOOLTIP CONFIG
+  @Input() tooltipText?: string;
+  @Input() tooltipPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
+  @Input() tooltipTrigger: 'hover' | 'click' | 'focus' = 'hover';
+
   @Output() onClick = new EventEmitter<Event>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tooltipService: TooltipService) {}
 
   clickEmit(event: Event): void {
     if (this.disabled) {
@@ -41,6 +47,42 @@ export class ButtonComponent {
   navigateTo(): void {
     if (this.routerLink) {
       this.router.navigate([this.routerLink]);
+    }
+  }
+
+  // TOOLTIP EVENTS
+  @HostListener('mouseenter', ['$event.target'])
+  onMouseEnter(target: HTMLElement): void {
+    if (this.tooltipTrigger === 'hover' && this.tooltipText) {
+      this.tooltipService.show(target, this.tooltipText, this.tooltipPosition);
+    }
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave(): void {
+    if (this.tooltipTrigger === 'hover') {
+      this.tooltipService.hide();
+    }
+  }
+
+  @HostListener('click', ['$event.target'])
+  onClickTooltip(target: HTMLElement): void {
+    if (this.tooltipTrigger === 'click' && this.tooltipText) {
+      this.tooltipService.show(target, this.tooltipText, this.tooltipPosition);
+    }
+  }
+
+  @HostListener('focus', ['$event.target'])
+  onFocus(target: HTMLElement): void {
+    if (this.tooltipTrigger === 'focus' && this.tooltipText) {
+      this.tooltipService.show(target, this.tooltipText, this.tooltipPosition);
+    }
+  }
+
+  @HostListener('blur')
+  onBlur(): void {
+    if (this.tooltipTrigger === 'focus') {
+      this.tooltipService.hide();
     }
   }
 }

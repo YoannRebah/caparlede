@@ -1,4 +1,4 @@
-<app-header>
+<app-header [id]="id" [classNames]="classNames">
 
     <div id="left" class="w-2/3 flex items-center justify-start">
         <a href="#">
@@ -13,23 +13,23 @@
             </li>
             <li>
                 <app-button id="btn-help" title="Aides et contact" iconFA="fa-solid fa-question"
-                    classNames="btn-primary-rounded text-sm" />
+                    classNames="btn-primary-rounded text-xs" />
             </li>
             <li>
                 <app-button id="btn-profil" title="Mon profil" iconFA="fa-regular fa-user"
-                    classNames="btn-primary-rounded text-sm" />
+                    classNames="btn-primary-rounded text-xs" />
             </li>
             <li>
                 <app-button id="btn-settings" title="Mes paramètres" iconFA="fa-solid fa-gear"
-                    classNames="btn-primary-rounded text-sm" />
+                    classNames="btn-primary-rounded text-xs" />
             </li>
             <li class="hidden md:block">
                 <app-button id="btn-logout" title="Se déconnecter" iconFA="fa-solid fa-power-off"
-                    classNames="btn-secondary-rounded-border text-sm" />
+                    classNames="btn-secondary-rounded-border text-xs" />
             </li>
             <li class="block md:hidden">
                 <app-button id="btn-menu" title="Ouvrir le menu" iconFA="fa-solid fa-bars"
-                    classNames="btn-primary-rounded-border text-sm" />
+                    classNames="btn-primary-rounded-border text-xs" />
             </li>
         </ul>
     </div>
@@ -41,30 +41,14 @@
                     <li>
                         <app-button 
                             id="btn-{{item.id}}" 
-                            [text]="item.label" 
+                            [text]="item.text" 
                             iconFA="fa-regular fa-envelope" 
                             classNames="btn-quaternary w-full text-xs"
                             [routerLink]="item.route" />
                     </li>
                 } @else {
                     <li class="relative group">
-                        <app-button 
-                            id="btn-dropdown-{{item.id}}" 
-                            [text]="item.label" 
-                            iconFA="fa-regular fa-envelope" 
-                            classNames="btn-quaternary w-full text-xs" />
-
-                            <ul class="absolute left-0 top-full w-full hidden group-hover:flex flex-col gap-1 bg-white shadow-lg border-2 border-gray-100 rounded-xl p-2 z-40">
-                                @for (sub of item.sublinks; track sub.id) {
-                                <li>
-                                    <app-button 
-                                        id="btn-sub-{{sub.id}}" 
-                                        [text]="sub.label" 
-                                        classNames="btn-quaternary w-full text-xs"
-                                        [routerLink]="sub.route" />
-                                </li>
-                                }
-                            </ul>
+                        <app-dropdown id="dropdown" [btnText]="item.text" [sublinks]="item.sublinks" />
                     </li>
                 }
             }

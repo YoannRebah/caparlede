@@ -1,4 +1,4 @@
-<app-header-connected />
+<app-header-connected id="header-connected" />
 
 <main class="py-6 px-5 h-full lg:px-10">
       
@@ -6,6 +6,25 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
             <div class="grid grid-cols-2 lg:grid-cols-2 gap-1 p-2">
+                <app-button 
+                    id="btn-1" 
+                    text="Tooltip" 
+                    iconFA="fa-regular fa-envelope" 
+                    classNames="btn-primary text-xl" 
+                    (onClick)="test()"
+                    tooltipText="Clique pour sauvegarder ton travail"
+                    tooltipPosition="top"
+                    tooltipTrigger="hover" />
+
+                <app-button 
+                    id="btn-155" 
+                    text="Tooltip click 2" 
+                    classNames="btn-primary text-sm" 
+                    (onClick)="test()"
+                    tooltipText="Clique pour sauvegarder ton travail"
+                    tooltipPosition="top"
+                    tooltipTrigger="click" />
+                
                 <app-button id="btn-1" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-primary text-xl" (onClick)="test()" />
                 <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-sm" />
                 <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-xl" />
@@ -50,8 +69,6 @@
             inventore officia fugiat nisi beatae a tenetur perferendis laborum laudantium, reiciendis exercitationem
             vero. Recusandae, dolorum eius.
         </p>
-
-        <app-header-connected />
 
         <form [formGroup]="form">
 

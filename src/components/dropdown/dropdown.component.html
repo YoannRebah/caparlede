@@ -1,0 +1,25 @@
+<li class="relative group">
+
+    <div class="flex items-center gap-2">
+        <app-button 
+            id="btn-dropdown-{{id}}" 
+            [text]="btnText" 
+            [iconFA]="iconFA" 
+            classNames="btn-quaternary w-full text-xs">
+            <i class="fa-solid fa-chevron-down chevron-down transition-transform duration-200 group-hover:rotate-180"></i>
+        </app-button>
+    </div>
+
+    <ul class="absolute left-0 top-full w-full hidden group-hover:flex flex-col gap-1 bg-white shadow-lg border-2 border-gray-100 rounded-xl p-2 z-40">
+        @for (sub of sublinks; track sub.id) {
+            <li>
+                <app-button 
+                    id="btn-dropdown-sub-{{sub.id}}" 
+                    [text]="sub.text" 
+                    classNames="btn-quaternary w-full text-xs"
+                    [routerLink]="sub.route" />
+            </li>
+        }
+    </ul>
+
+</li>

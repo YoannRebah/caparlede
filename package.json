@@ -2,6 +2,7 @@
   "name": "caparlede",
   "version": "0.0.0",
   "scripts": {
+    "type": "module",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

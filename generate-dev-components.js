@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const componentsDir = path.join(__dirname, './src/components');
-const outputFile = path.join(__dirname, './src/app/dev-components.ts');
+const componentsDir = path.join(process.cwd(), 'src/components');
+const outputFile = path.join(process.cwd(), 'src/app/dev-components.ts');
 
 const componentFiles = [];
 
@@ -50,7 +50,7 @@ function generateUsage(componentName, inputs) {
 let output = `// Ce fichier est généré automatiquement.\n\n`;
 
 componentFiles.forEach(comp => {
-  const relativePath = `./src/components/${comp.dir}/${comp.name.replace('.ts', '')}`;
+  const relativePath = `../components/${comp.dir}/${comp.name.replace('.ts', '')}`;
   output += `import { ${comp.name} } from '${relativePath}';\n`;
 });
 
