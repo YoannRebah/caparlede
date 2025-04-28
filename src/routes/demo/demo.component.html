@@ -1,0 +1,84 @@
+<app-header-connected />
+
+<main class="py-6 px-5 h-full lg:px-10">
+      
+    <div class="container">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
+            <div class="grid grid-cols-2 lg:grid-cols-2 gap-1 p-2">
+                <app-button id="btn-1" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-primary text-xl" (onClick)="test()" />
+                <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-sm" />
+                <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-xl" />
+                <app-button id="btn-1" imgPath="assets/images/logo.png" classNames="btn-primary text-xl" />
+                <app-button id="btn-1" iconFA="fa-regular fa-envelope" classNames="btn-primary text-xl" />
+                <app-button id="btn-2" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-primary-border flex-row-reverse" />
+                <app-button id="btn-3" iconFA="fa-regular fa-envelope" classNames="btn-primary-rounded" />
+                <app-button id="btn-4" text="T" classNames="btn-primary-rounded-border fs-xl" />
+                <app-button id="btn-5" text="Valider" classNames="btn-primary-transparent" />
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-2 gap-1 p-2">
+                <app-button id="btn-6" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-secondary text-xl" />
+                <app-button id="btn-7" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-secondary-border flex-row-reverse" />
+                <app-button id="btn-8" iconFA="fa-regular fa-envelope" classNames="btn-secondary-rounded" />
+                <app-button id="btn-9" text="T" classNames="btn-secondary-rounded-border" />
+                <app-button id="btn-10" text="Valider" classNames="btn-secondary-transparent" />
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-2 gap-1 p-2">
+                <app-button id="btn-11" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-tertiary text-xl" />
+                <app-button id="btn-12" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-tertiary-border flex-row-reverse" />
+                <app-button id="btn-13" iconFA="fa-regular fa-envelope" classNames="btn-tertiary-rounded" />
+                <app-button id="btn-14" text="T" classNames="btn-tertiary-rounded-border" />
+                <app-button id="btn-15" text="Valider" classNames="btn-tertiary-transparent" />
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-2 gap-1 p-2">
+                <app-button id="btn-1" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-quaternary text-xl" (onClick)="test()" />
+                <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-quaternary text-sm" />
+                <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-quaternary text-xl" />
+                <app-button id="btn-1" imgPath="assets/images/logo.png" classNames="btn-quaternary text-xl" />
+                <app-button id="btn-1" iconFA="fa-regular fa-envelope" classNames="btn-quaternary text-xl" />
+                <app-button id="btn-2" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-quaternary-border flex-row-reverse" />
+                <app-button id="btn-3" iconFA="fa-regular fa-envelope" classNames="btn-quaternary-rounded" />
+                <app-button id="btn-4" text="T" classNames="btn-quaternary-rounded-border fs-xl" />
+                <app-button id="btn-5" text="Valider" classNames="btn-quaternary-transparent" />
+              </div>              
+        </div>
+
+        <h1>Formulaire</h1>
+
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima sint, facilis velit asperiores ratione
+            inventore officia fugiat nisi beatae a tenetur perferendis laborum laudantium, reiciendis exercitationem
+            vero. Recusandae, dolorum eius.
+        </p>
+
+        <app-header-connected />
+
+        <form [formGroup]="form">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+
+                <app-input id="email" type="mail" label="email :" placeholder="email" [control]="getControl('email')"
+                    [required]="true" />
+
+                <app-input id="username" type="text" label="username :" placeholder="username"
+                    [control]="getControl('username')" />
+
+                <app-input id="password" type="password" label="password :" placeholder="password"
+                    [control]="getControl('password')" [showEye]="true" />
+
+                <app-input id="confirmPassword" type="password" label="confirmPassword :" placeholder="confirmPassword"
+                    [control]="getControl('password')" />
+
+                <app-input id="termsAccepted" type="checkbox" label="termsAccepted" [control]="getControl('checked')" />
+
+            </div>
+
+            <app-button id="btn-form" text="Valider" [disabled]="!form.valid" (onClick)="onSubmit()" />
+
+        </form>
+
+
+
+    </div>
+
+</main>

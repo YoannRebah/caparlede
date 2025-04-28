@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:tailwind": "tailwindcss -c tailwind.config.ts -i ./src/styles/styles.css -o ./public/dist/css/styles.css"
+    "build:tailwind": "tailwindcss -c tailwind.config.ts -i ./src/styles/styles.css -o ./public/dist/css/styles.css",
+    "generate:dev": "generate-dev-components.js"
   },
   "private": true,
   "dependencies": {

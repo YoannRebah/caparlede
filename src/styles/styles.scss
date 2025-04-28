@@ -8,6 +8,12 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  &:disabled {
+    color: var(--color-white) !important;
+    background: var(--color-disabled) !important;
+    cursor: default !important;
+  }
 }
 
 html,
@@ -15,15 +21,31 @@ body {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6,
-h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span,
+h6 span {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
-p, span, a, button, input, select, textarea, label, label span {
+p,
+span,
+a,
+button,
+input,
+select,
+textarea,
+label {
   font-family: 'Inter';
-  font-size: 15px;
 }
 
 input,
@@ -34,11 +56,15 @@ a {
   outline: none;
 }
 
-.btn, a, button {
+.btn,
+a,
+button {
   cursor: pointer;
 }
 
-a>*, button>*, .btn>* {
+a>*,
+button>*,
+.btn>* {
   pointer-events: none;
 }
 
@@ -46,23 +72,7 @@ a>*, button>*, .btn>* {
 
 @layer components {}
 
-@layer utilities {
-  .anim-fade-scale {
-    animation: anim-fade-scale .5s forwards;
-
-    @keyframes anim-fade-scale {
-      from {
-        opacity: 0;
-        transform: scale(1.2);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  }
-}
+@layer utilities {}
 
 
 // ===========
@@ -75,7 +85,7 @@ a>*, button>*, .btn>* {
   background: var(--color-white, #fff);
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   z-index: 9999;
   display: flex;
   flex-direction: column;

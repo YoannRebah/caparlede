@@ -1,0 +1,244 @@
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary-border {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-primary-transparent {
+    color: var(--color-primary);
+
+    &:hover,
+    &:active,
+    &.active {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+
+.btn-primary-rounded {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary-rounded-border {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+// ====================================
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary-border {
+    border: 1px solid var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.btn-secondary-transparent {
+    color: var(--color-secondary);
+
+    &:hover,
+    &:active,
+    &.active {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+
+.btn-secondary-rounded {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary-rounded-border {
+    border: 1px solid var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+// ====================================
+.btn-tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-white);
+}
+
+.btn-tertiary-border {
+    border: 1px solid var(--color-tertiary);
+    color: var(--color-tertiary);
+}
+
+.btn-tertiary-transparent {
+    color: var(--color-tertiary);
+
+    &:hover,
+    &:active,
+    &.active {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+
+.btn-tertiary-rounded {
+    background-color: var(--color-tertiary);
+    color: var(--color-white);
+}
+
+.btn-tertiary-rounded-border {
+    border: 1px solid var(--color-tertiary);
+    color: var(--color-tertiary);
+}
+
+// ====================================
+.btn-quaternary {
+    color: var(--color-quaternary);
+
+    &:hover,
+    &:active,
+    &.active {
+        background-color: var(--color-quaternary-light);
+
+        i {
+            color: var(--color-secondary);
+        }
+    }
+}
+
+.btn-quaternary-border {
+    color: var(--color-quaternary);
+    border: 1px solid transparent;
+
+    &:hover,
+    &:active,
+    &.active {
+        border-color: var(--color-quaternary);
+        background-color: var(--color-quaternary-light);
+
+        i {
+            color: var(--color-secondary);
+        }
+    }
+}
+
+.btn-quaternary-transparent {
+    color: var(--color-quaternary);
+
+    &:hover,
+    &:active,
+    &.active {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+
+.btn-quaternary-rounded {
+    color: var(--color-quaternary);
+
+    &:hover,
+    &:active,
+    &.active {
+        background-color: var(--color-quaternary-light);
+
+        i {
+            color: var(--color-secondary);
+        }
+    }
+}
+
+.btn-quaternary-rounded-border {
+    color: var(--color-quaternary);
+    border: 1px solid transparent;
+
+    &:hover,
+    &:active,
+    &.active {
+        border-color: var(--color-quaternary);
+        background-color: var(--color-quaternary-light);
+
+        i {
+            color: var(--color-secondary);
+        }
+    }
+}
+
+// ==========================================
+
+.btn-primary-rounded-border,
+.btn-primary-rounded,
+.btn-secondary-rounded-border,
+.btn-secondary-rounded,
+.btn-tertiary-rounded-border,
+.btn-tertiary-rounded,
+.btn-quaternary-rounded-border,
+.btn-quaternary-rounded
+ {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+
+    &.fs-xs {
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+    }
+
+    &.fs-sm {
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+    }
+
+    &.fs-base {
+        width: 34px;
+        min-width: 34px;
+        height: 34px;
+    }
+
+    &.fs-lg {
+        width: 42px;
+        min-width: 42px;
+        height: 42px;
+    }
+
+    &.fs-xl {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+    }
+
+    &.fs-2xl {
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+    }
+
+    &.fs-3xl {
+        width: 54px;
+        min-width: 54px;
+        height: 54px;
+    }
+
+    &.fs-4xl {
+        width: 57px;
+        min-width: 57px;
+        height: 57px;
+    }
+
+    &.fs-5xl {
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+    }
+}

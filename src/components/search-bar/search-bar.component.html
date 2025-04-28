@@ -1,0 +1,57 @@
+<div #searchBarTrigger>
+    <app-button 
+        (onClick)="openFullScreenSearch()" 
+        id="btn-search-bar" 
+        iconFA="fa-solid fa-magnifying-glass" 
+        classNames="btn-primary-rounded-border text-sm" />
+</div>
+
+@if(showFullScreen) {
+<div #searchBarFullScreen
+    class="fixed top-0 left-0 w-full h-full bg-gray-600/60 backdrop-blur-sm flex items-start pt-8 justify-center animate-fade-scale z-40">
+
+    <div #searchBarContent class="flex flex-col gap-1 w-[90%] max-w-[480px] bg-gray-200 p-2 rounded-3xl">
+
+        <div class="flex items-center gap-2 bg-white rounded-3xl px-2">
+            <div class="pl-1"><i class="fa-solid fa-magnifying-glass text-primary"></i></div>
+            <input #fullscreenInput class="w-full px-1 py-2 rounded-3xl" [(ngModel)]="inputValue"
+                (input)="onSearchInput(inputValue)" (keydown.enter)="onEnterKey()" type="search"
+                placeholder="Rechercher...">
+        </div>
+
+        <nav class="bg-white rounded-3xl">
+            <ul>
+                @if(allRoutesDataFiltered.length > 0) {
+                    @for (route of allRoutesDataFiltered; track $index) {
+                        <li class="flex">
+                            <a #link [routerLink]="[`/${route.path}`]"
+                                class="flex items-center gap-3 h-full w-full p-3 text-s rounded-3xl text-gray-600 hover:bg-gray-100"
+                                [class.bg-gray-200]="$index === activeIndex" (click)="onItemClick($index)">
+                                <i class="{{route.data.icon}} text-primary"></i>
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-xs">{{route.data.label}}</span>
+                                    <span class="text-xs">{{route.path}}</span>
+                                </div>
+                            </a>
+                            <hr class="my-3">
+                        </li>
+                    }
+                }
+                @if(allRoutesDataFiltered.length === 0) {
+                    <li class="flex">
+                        <div class="flex items-center gap-3 h-full w-full p-3 text-s text-gray-500">
+                            <i class="fa-regular fa-face-frown-open text-2xl text-gray-400"></i>
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-xs">Aucun résultat</span>
+                                <a href="/dashboard" class="text-xs underline text-primary-light">Revenir à mon Tableau de bord</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </nav>
+
+    </div>
+
+</div>
+}

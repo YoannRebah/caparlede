@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { DemoComponent } from './routes/demo/demo.component';
-import { Page404Component } from './routes/page404/page404.component';
-import { LoginComponent } from './routes/login/login.component';
-import { HomeComponent } from './routes/home/home.component';
-import { ContactComponent } from './routes/contact/contact.component';
-import { DashboardComponent } from './routes/dashboard/dashboard.component';
+import { ContactComponent } from '../routes/contact/contact.component';
+import { DashboardComponent } from '../routes/dashboard/dashboard.component';
+import { DemoComponent } from '../routes/demo/demo.component';
+import { HomeComponent } from '../routes/home/home.component';
+import { LoginComponent } from '../routes/login/login.component';
+import { Page404Component } from '../routes/page404/page404.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +20,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'login',
+    path: 'login', pathMatch: 'full',
     component: LoginComponent,
     data: {
       label: 'Connexion',

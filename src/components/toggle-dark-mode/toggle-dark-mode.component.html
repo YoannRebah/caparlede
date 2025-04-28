@@ -1,0 +1,24 @@
+<div class="flex justify-between rounded-3xl">
+    <div class="flex items-center gap-3 p-1 pl-2 my-1 mx-2 rounded-3xl text-sm">
+        <div class="flex flex-col">
+            <span class="font-semibold text-sm">Activer le thème sombre</span>
+            @if(isDarkMode) {
+            <span class="text-xs">Thème sombre activé</span>
+            }
+            @if(!isDarkMode) {
+            <span class="text-xs">Thème sombre désactivé</span>
+            }
+        </div>
+    </div>
+    <div class="flex items-center">
+        <!-- Toggle Button -->
+        <label class="relative inline-flex items-center cursor-pointer mr-5">
+            <input type="checkbox" class="sr-only peer" (change)="toggleDarkMode()" [checked]="isDarkMode" />
+            <div class="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-gray-600 transition-colors duration-300">
+            </div>
+            <div
+                class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-transform duration-300 peer-checked:translate-x-full">
+            </div>
+        </label>
+    </div>
+</div>

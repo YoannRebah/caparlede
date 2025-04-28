@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LoadingService } from './components/loader/loading.service';
-import { Observable } from 'rxjs';
-import { LoaderComponent } from './components/loader/loader.component';
 import { CommonModule } from '@angular/common';
-import { DarkModeService } from './components/toggle-dark-mode/dark-mode.service';
-import { ThemeService } from './themes/themes.service';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
+import { LoaderComponent } from '../components/loader/loader.component';
+import { LoadingService } from '../components/loader/loading.service';
+import { DarkModeService } from '../components/toggle-dark-mode/dark-mode.service';
+import { ThemeService } from '../themes/themes.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class AppComponent {
 
-  isDarkMode!:boolean;
+  isDarkMode!: boolean;
   isLoading$: Observable<boolean>;
 
   constructor(
@@ -30,6 +30,6 @@ export class AppComponent {
 
   ngOnInit() {
     const theme = this.themeService.theme || '1';
-    this.themeService.setTheme(theme);  
+    this.themeService.setTheme(theme);
   }
 }

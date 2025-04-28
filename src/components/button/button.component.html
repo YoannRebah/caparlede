@@ -1,0 +1,26 @@
+<button 
+    [id]="id" 
+    class="btn flex items-center justify-center gap-1 py-1 px-2 rounded-xl shadow-sm"
+    [ngClass]="[
+        classNames, 
+        classNames.includes('btn-primary') ? 'hover:shadow-primary' : '',
+        classNames.includes('btn-secondary') ? 'hover:shadow-secondary' : '',
+        classNames.includes('btn-tertiary') ? 'hover:shadow-tertiary' : '',
+        disabled ? 'hover:shadow-disabled' : ''
+    ]"
+    [type]="type"
+    [title]="title"
+    (click)="clickEmit($event)"
+    [disabled]="disabled"
+    [routerLink]="routerLink"
+>
+    @if (imgPath) {
+        <img [src]="imgPath" class="w-100 max-w-[70px]" alt="">
+    }
+    @if (iconFA) {
+        <i [class]="iconFA"></i>
+    }
+    @if (text) {
+        <span [innerHTML]="text"></span>
+    }
+</button>
