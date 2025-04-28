@@ -1,0 +1,30 @@
+<div class="p-4 space-y-4">
+
+  <h2 class="text-2xl font-bold">Browser Test</h2>
+
+  <div class="grid gap-2">
+    <p>Theme: <span class="font-semibold">{{ theme }}</span></p>
+    <p>Online: <span class="font-semibold">{{ online }}</span></p>
+    <p>Visibility: <span class="font-semibold">{{ visibility }}</span></p>
+    <p>OS: <span class="font-semibold">{{ getOS() }}</span></p>
+    <p>Browser: <span class="font-semibold">{{ getBrowser() }}</span></p>
+    <p>User Agent: <span class="font-mono text-xs">{{ getUserAgent() }}</span></p>
+  </div>
+
+  <hr class="my-4 border-gray-300">
+
+  <div class="flex flex-col gap-2">
+    <h3 class="text-xl font-semibold">LocalStorage</h3>
+    <button class="btn btn-primary" (click)="saveToLocal()">Save Local</button>
+    <button class="btn btn-secondary" (click)="clearLocal()">Clear Local</button>
+    <pre class="bg-gray-100 p-2 rounded">{{ userLocalStorage | json }}</pre>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <h3 class="text-xl font-semibold">SessionStorage</h3>
+    <button class="btn btn-primary" (click)="saveToSession()">Save Session</button>
+    <button class="btn btn-secondary" (click)="clearSession()">Clear Session</button>
+    <pre class="bg-gray-100 p-2 rounded">{{ userSessionStorage | json }}</pre>
+  </div>
+
+</div>

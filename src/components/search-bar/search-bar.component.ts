@@ -13,6 +13,11 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class SearchBarComponent implements OnInit, AfterViewInit {
 
+  @Input() isLoading: boolean = false;
+
+  @Input({ required: true }) id!: string;
+  @Input() classNames?: string;
+
   showFullScreen: boolean = false;
   allRoutesData!: any;
   resultFiltered!: any;

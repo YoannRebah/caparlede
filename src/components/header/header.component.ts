@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @Input() isLoading: boolean = false;
+  
   @Input({ required: true }) id!: string;
   @Input() classNames?: string;
 }

@@ -7,6 +7,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 import { LoadingService } from '../components/loader/loading.service';
 import { DarkModeService } from '../components/toggle-dark-mode/dark-mode.service';
 import { ThemeService } from '../themes/themes.service';
+import { BrowserService } from '../browser/browser.service';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,19 @@ import { ThemeService } from '../themes/themes.service';
 })
 export class AppComponent {
 
+  browserTheme: 'light' | 'dark' = 'light';
   isDarkMode!: boolean;
   isLoading$: Observable<boolean>;
 
   constructor(
     private loadingService: LoadingService,
     private darkModeService: DarkModeService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private browserService: BrowserService
   ) {
     this.isLoading$ = this.loadingService.loading$;
     this.darkModeService.isDarkMode$.subscribe(val => this.isDarkMode = val);
+    this.browserService.theme$.subscribe(theme => this.browserTheme = theme);
   }
 
   ngOnInit() {

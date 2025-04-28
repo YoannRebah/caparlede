@@ -1,4 +1,4 @@
-<div class="app-container h-screen overflow-y-auto bg-body pt-20">
+<div class="app-container h-screen overflow-y-auto bg-body pt-20" [attr.data-browser-theme]="browserTheme">
     <app-loader [isLoading]="(isLoading$ | async) ?? false" [isFullScreen]="true" />
     <router-outlet></router-outlet>
 </div>

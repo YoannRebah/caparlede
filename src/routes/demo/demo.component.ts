@@ -6,10 +6,11 @@ import { FormService } from '../../components/input/form.service';
 import { InputComponent } from '../../components/input/input.component';
 import { LoadingService } from '../../components/loader/loading.service';
 import { ButtonComponent } from '../../components/button/button.component';
+import { BrowserTestComponent } from '../../browser/browser-test.component';
 
 @Component({
   selector: 'app-demo',
-  imports: [HeaderConnectedComponent, ReactiveFormsModule, InputComponent, ButtonComponent],
+  imports: [HeaderConnectedComponent, ReactiveFormsModule, InputComponent, ButtonComponent, BrowserTestComponent],
   templateUrl: './demo.component.html',
   styleUrl: './demo.component.scss'
 })

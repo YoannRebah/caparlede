@@ -13,6 +13,8 @@ import { DropdownComponent } from '../../dropdown/dropdown.component';
   styleUrl: './header-connected.component.scss'
 })
 export class HeaderConnectedComponent {
+  @Input() isLoading: boolean = false;
+  
   @Input({ required: true }) id!: string;
   @Input() classNames?: string;
 

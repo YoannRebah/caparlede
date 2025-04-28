@@ -9,6 +9,8 @@ import { Sublink } from './sublink.interface';
   styleUrl: './dropdown.component.scss'
 })
 export class DropdownComponent {
+  @Input() isLoading: boolean = false;
+  
   @Input({ required: true }) id!: string;
   @Input() classNames?: string;
   @Input() btnText?: string;

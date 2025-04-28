@@ -8,7 +8,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './input.component.scss'
 })
 export class InputComponent {
+  @Input() isLoading: boolean = false;
+
   @Input({ required: true }) id!: string;
+  @Input() classNames?: string;
+  
   @Input() type: string = 'text';
   @Input() name?: string;
   @Input() placeholder: string = "";

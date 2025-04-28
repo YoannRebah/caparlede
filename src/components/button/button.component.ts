@@ -11,6 +11,8 @@ import { TooltipService } from '../tooltip/tooltip.service';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
+  @Input() isLoading: boolean = false;
+
   @Input() id!: string;
   @Input() classNames: string = 'btn-primary btn-base';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
