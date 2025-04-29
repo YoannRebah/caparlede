@@ -16,4 +16,5 @@ export class DropdownComponent {
   @Input() btnText?: string;
   @Input() iconFA?: string;
   @Input() sublinks?: Sublink[];
+  @Input() iconClassNames?: string;
 }

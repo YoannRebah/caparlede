@@ -2,7 +2,7 @@
 
     <div id="left" class="w-2/3 flex items-center justify-start">
         <a href="#">
-            <img class="w-[100px]" src="assets/images/logo.png" alt="">
+            <img class="w-[85px] lg:w-[100px]" src="assets/images/logo.png" alt="">
         </a>
     </div>
 
@@ -12,43 +12,48 @@
                 <app-search-bar id="search-bar" />
             </li>
             <li>
-                <app-button id="btn-help" title="Aides et contact" iconFA="fa-solid fa-question"
-                    classNames="btn-primary-rounded text-xs" />
+                <app-button id="btn-portefeuille" tooltipText="Mon portefeuille" tooltipPosition="bottom" iconFA="fa-solid fa-suitcase"
+                    classNames="btn-tertiary-rounded text-xs" routerLink="/portefeuille" />
             </li>
             <li>
-                <app-button id="btn-profil" title="Mon profil" iconFA="fa-regular fa-user"
-                    classNames="btn-primary-rounded text-xs" />
+                <app-button id="btn-help" tooltipText="Aides et contact" tooltipPosition="bottom" iconFA="fa-solid fa-question"
+                    classNames="btn-primary-rounded text-xs" routerLink="/aides-contact" />
             </li>
             <li>
-                <app-button id="btn-settings" title="Mes paramètres" iconFA="fa-solid fa-gear"
-                    classNames="btn-primary-rounded text-xs" />
+                <app-button id="btn-profil" tooltipText="Mon profil" tooltipPosition="bottom" iconFA="fa-regular fa-user"
+                    classNames="btn-primary-rounded text-xs" routerLink="/profil" />
+            </li>
+            <li>
+                <app-button id="btn-settings" tooltipText="Mes paramètres" tooltipPosition="bottom" iconFA="fa-solid fa-gear"
+                    classNames="btn-primary-rounded text-xs" routerLink="/parametres" />
             </li>
             <li class="hidden md:block">
-                <app-button id="btn-logout" title="Se déconnecter" iconFA="fa-solid fa-power-off"
+                <app-button id="btn-logout" tooltipText="Se déconnecter" tooltipPosition="bottom" iconFA="fa-solid fa-power-off"
                     classNames="btn-secondary-rounded-border text-xs" />
             </li>
             <li class="block md:hidden">
-                <app-button id="btn-menu" title="Ouvrir le menu" iconFA="fa-solid fa-bars"
+                <app-button id="btn-menu" tooltipText="Ouvrir le menu" tooltipPosition="bottom" iconFA="fa-solid fa-bars"
                     classNames="btn-primary-rounded-border text-xs" />
             </li>
         </ul>
     </div>
 
-    <div id="bottom" class="hidden md:block py-1">
-        <ul class="flex items-center">
+    <div id="bottom" class="hidden md:block py-1 hide-scrollbar">
+        <ul class="flex items-center min-w-[1100px]">
             @for (item of DEV_DATA_NAV; track item.id) {
                 @if (!item.sublinks) {
                     <li>
                         <app-button 
                             id="btn-{{item.id}}" 
                             [text]="item.text" 
-                            iconFA="fa-regular fa-envelope" 
+                            [iconFA]="item.icon" 
+                            iconClassNames="text-secondary" 
                             classNames="btn-quaternary w-full text-xs"
                             [routerLink]="item.route" />
                     </li>
                 } @else {
                     <li class="relative group">
-                        <app-dropdown id="dropdown" [btnText]="item.text" [sublinks]="item.sublinks" />
+                        <app-dropdown id="dropdown" [btnText]="item.text" [iconFA]="item.icon" iconClassNames="text-secondary" [sublinks]="item.sublinks" />
                     </li>
                 }
             }

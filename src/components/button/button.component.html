@@ -12,21 +12,24 @@
   (click)="clickEmit($event)"
   [disabled]="disabled"
   [routerLink]="routerLink"
+  [appTooltip]="tooltipText"
+  [tooltipPosition]="tooltipPosition"
+  [tooltipTrigger]="tooltipTrigger"
 >
   @if (imgPath) {
     <img [src]="imgPath" class="w-100 max-w-[70px]" alt="">
   }
   @if (iconFA) {
-    <i [class]="iconFA"></i>
+    <i [class]="iconFA + ' ' + iconClassNames"></i>
   }
   @if (text) {
-    <span [innerHTML]="text"></span>
+    <span [class]="textClassNames" [innerHTML]="text"></span>
+  }
+
+  @if (isLoading) {
+    <app-loader-local id="loader-local-{{id}}" />
   }
 
   <ng-content></ng-content>
-
-  @if (isLoading) {
-    <app-loader-local id="loader-local-button" />
-  }
 
 </button>

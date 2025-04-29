@@ -8,8 +8,10 @@
 
 @if(isLoading && !isFullScreen) {
     <div [id]="id" [class]="classNames" class="absolute top-0 left-0 w-full h-full bg-gray-700/40 z-10 flex items-center justify-center rounded-xl">
-        <div class="loader loader-screen">
-            <div class="spinner spinner-s"></div>
+        <div class="loader loader-screen flex gap-2">
+            <div class="spinner spinner-s" style="animation-delay: 0.25s;"></div>
+            <div class="spinner spinner-s" style="animation-delay: 0.5s;"></div>
+            <div class="spinner spinner-s" style="animation-delay: 1s;"></div>
         </div>
     </div>
 }

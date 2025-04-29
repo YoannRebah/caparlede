@@ -2,14 +2,16 @@ export const DEV_DATA_NAV = [
     {
         id: 'dashboard',
         route: 'dashboard',
-        icon: '',
-        text: 'Accueil',
+        icon: 'fa-solid fa-chart-line',
+        text: 'Tableau de bord',
+        isForHeader: true,
     },
     {
         id: 'operations',
-        route: 'dashboard',
-        icon: '',
+        route: 'operations',
+        icon: 'fa-solid fa-arrows-turn-to-dots',
         text: 'Opérations',
+        isForHeader: true,
         sublinks: [
             {
                 id: 'acheter',
@@ -28,7 +30,7 @@ export const DEV_DATA_NAV = [
     {
         id: 'operations-titres',
         route: 'operations-titres',
-        icon: '',
+        icon: 'fa-solid fa-arrows-turn-to-dots',
         text: 'Opérations sur titres',
         sublinks: [
             {
@@ -48,13 +50,13 @@ export const DEV_DATA_NAV = [
     {
         id: 'documentation',
         route: 'documentation',
-        icon: '',
+        icon: 'fa-solid fa-desktop',
         text: 'Documentation',
     },
     {
         id: 'historique',
         route: 'historique',
-        icon: '',
+        icon: 'fa-solid fa-clock-rotate-left',
         text: 'Historique des opérations',
         sublinks: [
             {
@@ -74,7 +76,7 @@ export const DEV_DATA_NAV = [
     {
         id: 'ag',
         route: 'ag',
-        icon: '',
+        icon: 'fa-solid fa-people-line',
         text: 'Assemblée générale',
     },
 ]

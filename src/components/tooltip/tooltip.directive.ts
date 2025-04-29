@@ -1,51 +1,62 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+} from '@angular/core';
 import { TooltipService } from './tooltip.service';
 
 @Directive({
   selector: '[appTooltip]'
 })
-export class TooltipDirective {
-  @Input('appTooltip') text = '';
-  @Input() tooltipPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
-  @Input() tooltipTrigger: 'hover' | 'click' | 'focus' = 'hover';
+export class TooltipDirective implements OnDestroy {
+
+  @Input('appTooltip') tooltipText?: string;
+  @Input() tooltipPosition:string = 'top'; // 'top' | 'bottom' | 'left' | 'right'
+  @Input() tooltipTrigger:string = 'hover'; // 'hover' | 'click' | 'focus'
 
   constructor(
-    private el: ElementRef,
+    private el: ElementRef<HTMLElement>,
     private tooltipService: TooltipService
   ) {}
 
   @HostListener('mouseenter')
-  onMouseEnter() {
-    if (this.tooltipTrigger === 'hover') {
-      this.tooltipService.show(this.el.nativeElement, this.text, this.tooltipPosition);
+  onMouseEnter(): void {
+    if (this.tooltipTrigger === 'hover' && this.tooltipText) {
+      this.tooltipService.show(this.el.nativeElement, this.tooltipText, this.tooltipPosition);
     }
   }
 
   @HostListener('mouseleave')
-  onMouseLeave() {
+  onMouseLeave(): void {
     if (this.tooltipTrigger === 'hover') {
       this.tooltipService.hide();
     }
   }
 
   @HostListener('click')
-  onClick() {
-    if (this.tooltipTrigger === 'click') {
-      this.tooltipService.show(this.el.nativeElement, this.text, this.tooltipPosition);
+  onClick(): void {
+    if (this.tooltipTrigger === 'click' && this.tooltipText) {
+      this.tooltipService.show(this.el.nativeElement, this.tooltipText, this.tooltipPosition);
     }
   }
 
   @HostListener('focus')
-  onFocus() {
-    if (this.tooltipTrigger === 'focus') {
-      this.tooltipService.show(this.el.nativeElement, this.text, this.tooltipPosition);
+  onFocus(): void {
+    if (this.tooltipTrigger === 'focus' && this.tooltipText) {
+      this.tooltipService.show(this.el.nativeElement, this.tooltipText, this.tooltipPosition);
     }
   }
 
   @HostListener('blur')
-  onBlur() {
+  onBlur(): void {
     if (this.tooltipTrigger === 'focus') {
       this.tooltipService.hide();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.tooltipService.hide();
   }
 }

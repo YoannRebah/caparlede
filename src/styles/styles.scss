@@ -70,9 +70,80 @@ button>*,
 
 @layer base {}
 
-@layer components {}
+@layer components {
+  .tooltip {
+    position: fixed;
+    z-index: 9999;
+    padding: 8px 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: tooltip 0.15s ease-in-out;
 
-@layer utilities {}
+    @keyframes tooltip {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  
+    &::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+    }
+  
+    &.tooltip-top::after {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px 5px 0 5px;
+      border-color: #333 transparent transparent transparent;
+    }
+  
+    &.tooltip-bottom::after {
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 5px 5px 5px;
+      border-color: transparent transparent #333 transparent;
+    }
+  
+    &.tooltip-left::after {
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px 0 5px 5px;
+      border-color: transparent transparent transparent #333;
+    }
+  
+    &.tooltip-right::after {
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px 5px 5px 0;
+      border-color: transparent #333 transparent transparent;
+    }
+  }
+  
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+  .hide-scrollbar::-webkit-scrollbar { 
+      display: none;  /* Safari and Chrome */
+  }
+}
 
 
 // ===========
