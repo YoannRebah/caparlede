@@ -2,16 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Observable } from 'rxjs';
-import { LoaderComponent } from '../components/loader/loader.component';
-import { LoadingService } from '../components/loader/loading.service';
 import { DarkModeService } from '../components/toggle-dark-mode/dark-mode.service';
 import { ThemeService } from '../themes/themes.service';
 import { BrowserService } from '../browser/browser.service';
+import { LoaderRequestComponent } from '../components/loader/loader-request/loader-request.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, ReactiveFormsModule, RouterOutlet, LoaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet, LoaderRequestComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,15 +17,12 @@ export class AppComponent {
 
   browserTheme: 'light' | 'dark' = 'light';
   isDarkMode!: boolean;
-  isLoading$: Observable<boolean>;
 
   constructor(
-    private loadingService: LoadingService,
     private darkModeService: DarkModeService,
     private themeService: ThemeService,
     private browserService: BrowserService
   ) {
-    this.isLoading$ = this.loadingService.loading$;
     this.darkModeService.isDarkMode$.subscribe(val => this.isDarkMode = val);
     this.browserService.theme$.subscribe(theme => this.browserTheme = theme);
   }

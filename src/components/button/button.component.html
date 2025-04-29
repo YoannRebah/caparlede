@@ -24,4 +24,9 @@
   }
 
   <ng-content></ng-content>
+
+  @if (isLoading) {
+    <app-loader-local id="loader-local-button" />
+  }
+
 </button>

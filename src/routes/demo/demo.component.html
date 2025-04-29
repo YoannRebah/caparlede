@@ -27,7 +27,7 @@
                     tooltipPosition="top"
                     tooltipTrigger="click" />
                 
-                <app-button id="btn-1" text="Valider" iconFA="fa-regular fa-envelope" classNames="btn-primary text-xl" (onClick)="test()" />
+                <app-button id="btn-1" text="Valider" iconFA="fa-regular fa-envelope" [isLoading]="true" classNames="btn-primary text-xl" (onClick)="test()" />
                 <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-sm" />
                 <app-button id="btn-1" text="Valider" imgPath="assets/images/logo.png" classNames="btn-primary text-xl" />
                 <app-button id="btn-1" imgPath="assets/images/logo.png" classNames="btn-primary text-xl" />
@@ -77,7 +77,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
 
                 <app-input id="email" type="mail" label="email :" placeholder="email" [control]="getControl('email')"
-                    [required]="true" />
+                    [required]="true" [isLoading]="true" />
 
                 <app-input id="username" type="text" label="username :" placeholder="username"
                     [control]="getControl('username')" />

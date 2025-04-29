@@ -2,11 +2,12 @@ import { Component, Input, Output, EventEmitter, HostListener } from '@angular/c
 import { NgClass } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { TooltipService } from '../tooltip/tooltip.service';
+import { LoaderLocalComponent } from '../loader/loader-local/loader-local.component';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, LoaderLocalComponent],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })

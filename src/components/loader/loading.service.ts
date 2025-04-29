@@ -14,10 +14,18 @@ export class LoadingService {
   setLoading(isLoading: boolean) {
     if (isLoading) {
       this.requestCount++;
-      setTimeout(() => this.loadingSubject.next(true), 0);
+      setTimeout(() => this.showLoading(), 0);
     } else if (--this.requestCount <= 0) {
       this.requestCount = 0;
-      setTimeout(() => this.loadingSubject.next(false), 1500);
+      setTimeout(() => this.hideLoading, 1500);
     }
+  }
+
+  showLoading() {
+    this.loadingSubject.next(true);
+  }
+
+  hideLoading() {
+    this.loadingSubject.next(false);
   }
 }

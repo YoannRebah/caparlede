@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { LoaderLocalComponent } from '../loader/loader-local/loader-local.component';
 
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LoaderLocalComponent],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss'
 })

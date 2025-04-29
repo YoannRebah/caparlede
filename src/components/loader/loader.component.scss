@@ -1,24 +1,29 @@
 .spinner {
-    background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
-    width: 100px;
-    height: 100px;
-    animation: spinning82341 1.7s linear infinite;
-    text-align: center;
-    border-radius: 50px;
-    filter: blur(1px);
-    box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+    position: relative;
+    border-radius: 50%;
+    border: 5px solid var(--color-white);
+    animation: spinner 1s infinite linear;
 
-    .spinner1 {
-        background-color: rgb(36, 36, 36);
-        width: 100px;
-        height: 100px;
-        border-radius: 50px;
-        filter: blur(10px);
+    @keyframes spinner {
+        0% {
+            border-radius: 25%;
+        }
+        50% {
+            border-radius: 50%;
+        }
+        100% {
+            transform: rotate(360deg);
+            border-radius: 25%;
+        }
     }
 
-    @keyframes spinning82341 {
-        to {
-            transform: rotate(360deg);
-        }
+    &.spinner-base {
+        width: 40px;
+        height: 40px;
+    }
+
+    &.spinner-s {
+        width: 30px;
+        height: 30px;
     }
 }

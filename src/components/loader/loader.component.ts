@@ -9,4 +9,7 @@ import { Component, Input } from '@angular/core';
 export class LoaderComponent {
   @Input() isLoading: boolean = false;
   @Input() isFullScreen: boolean = true;
+
+  @Input({ required: true }) id!: string;
+  @Input() classNames?: string;
 }
